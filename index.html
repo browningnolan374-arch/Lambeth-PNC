@@ -3,36 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNC System</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Lambeth PNC</title>
 </head>
 <body>
-    <header>
-        <h1>Lambeth Police National Computer</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#wanted">Wanted List</a></li>
-                <li><a href="#reports">Reports</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="search">
-            <h2>Search Criminal Records</h2>
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Enter name or ID" required>
-                <button type="submit">Search</button>
-            </form>
-            <div id="results-area">
-                <h3>Results:</h3>
-                <div id="results"></div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Lambeth PNC</p>
-    </footer>
-    <script src="script.js"></script>
+    <div id="top-bar">
+        <span id="officer-callsign">Officer: [Callsign]</span>
+        <span id="live-clock">2026-03-24 21:19:49 (UTC)</span>
+    </div>
+    <div id="sidebar">
+        <button onclick="navigate('search-person')">Search Person</button>
+        <button onclick="navigate('vehicles')">Vehicles</button>
+        <button onclick="navigate('reports')">Reports</button>
+        <button onclick="navigate('warrants')">Warrants</button>
+        <button onclick="navigate('anpr')">ANPR</button>
+        <button onclick="navigate('panic-button')">Panic Button</button>
+    </div>
+    <div id="content-panel">
+        <section id="search-person"></section>
+        <section id="vehicles"></section>
+        <section id="reports"></section>
+        <section id="warrants"></section>
+        <section id="anpr"></section>
+        <section id="panic-button"></section>
+    </div>
+    <script src="scripts.js"></script>
 </body>
 </html>
