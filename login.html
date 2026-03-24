@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .form-container {
+            border: 1px solid #00FF00;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #00FF00;
+            background-color: black;
+            color: #00FF00;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00FF00;
+            border: none;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .error { color: red; }
+        .success { color: lime; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 id="form-title">Login</h2>
+        <form id="auth-form">
+            <div id="error-message" class="error"></div>
+            <div id="success-message" class="success"></div>
+            <input type="text" id="officer-id" placeholder="Officer ID" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="text" id="full-name" placeholder="Full Name" required>
+            <input type="text" id="badge-number" placeholder="Badge Number" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <select id="department" required>
+                <option value="">Select Department</option>
+                <option value="Patrol">Patrol</option>
+                <option value="Investigation">Investigation</option>
+                <option value="Traffic">Traffic</option>
+                <option value="SWAT">SWAT</option>
+            </select>
+            <input type="password" id="password-confirm" placeholder="Confirm Password" required>
+            <button type="submit">Login</button>
+            <button type="button" id="toggle-form">Switch to Signup</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('auth-form');
+        const toggleButton = document.getElementById('toggle-form');
+        const title = document.getElementById('form-title');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+        let isLogin = true;
+
+        toggleButton.onclick = function() {
+            isLogin = !isLogin;
+            title.innerText = isLogin ? 'Login' : 'Signup';
+            toggleButton.innerText = isLogin ? 'Switch to Signup' : 'Switch to Login';
+            document.getElementById('full-name').style.display = isLogin ? 'none' : 'block';
+            document.getElementById('badge-number').style.display = isLogin ? 'none' : 'block';
+            document.getElementById('email').style.display = isLogin ? 'none' : 'block';
+            document.getElementById('department').style.display = isLogin ? 'none' : 'block';
+            document.getElementById('password-confirm').style.display = isLogin ? 'none' : 'block';
+        };
+
+        form.onsubmit = function(event) {
+            event.preventDefault();
+            const officerId = document.getElementById('officer-id').value;
+            const password = document.getElementById('password').value;
+            const passwordConfirm = document.getElementById('password-confirm').value;
+
+            if (!isLogin && (password !== passwordConfirm)) {
+                errorMessage.innerText = 'Passwords do not match!';
+                return;
+            }
+
+            const userData = {
+                officerId,
+                password,
+                fullName: isLogin ? null : document.getElementById('full-name').value,
+                badgeNumber: isLogin ? null : document.getElementById('badge-number').value,
+                email: isLogin ? null : document.getElementById('email').value,
+                department: isLogin ? null : document.getElementById('department').value
+            };
+
+            // Simulate authentication
+            localStorage.setItem('authToken', 'some-auth-token');
+            successMessage.innerText = isLogin ? 'Login Successful' : 'Signup Successful';
+            errorMessage.innerText = ''; 
+            form.reset();
+        };
+    </script>
+</body>
+</html>
