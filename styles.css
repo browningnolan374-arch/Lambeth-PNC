@@ -1,0 +1,36 @@
+.professional-police {
+    font-family: Arial, sans-serif;
+    color: navy;
+    background-color: #e6f0fa;
+    padding: 10px;
+    border: 2px solid #002663;
+    border-radius: 5px;
+}
+
+.header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin: 15px 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #ffffff;
+}
+
+.button {
+    background-color: #002663;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #001a4d;
+}
