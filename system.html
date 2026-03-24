@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNC System Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Redirect to login if not authenticated
+        const isAuthenticated = false; // Replace this with real authentication check
+        if (!isAuthenticated) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        /* Sidebar styling */
+        .sidebar {
+            width: 200px;
+            height: 100%;
+            background: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 15px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .sidebar a {
+            color: #00ff00;
+            padding: 10px 15px;
+            display: block;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        /* Top bar styling */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 200px;
+            right: 0;
+            background: #222;
+            color: #00ff00;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        /* Main content area styling */
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <a href="#person-search">Person Search</a>
+        <a href="#vehicle-search">Vehicle Search</a>
+        <a href="#reports">Reports</a>
+        <a href="#warrants">Warrants</a>
+        <a href="#anpr">ANPR</a>
+        <a href="#panic-button">Panic Button</a>
+    </div>
+    <div class="top-bar">
+        <span id="officer-name">Officer: John Doe</span>
+        <span id="live-clock" style="float:right;"></span>
+    </div>
+    <div class="content">
+        <h1>PNC System Dashboard</h1>
+        <div id="person-search">Person Search Section</div>
+        <div id="vehicle-search">Vehicle Search Section</div>
+        <div id="reports">Reports Section</div>
+        <div id="warrants">Warrants Section</div>
+        <div id="anpr">ANPR Section</div>
+        <div id="panic-button">Panic Button Section</div>
+    </div>
+    <script>
+        // Live clock functionality
+        function updateClock() {
+            const now = new Date().toUTCString();
+            document.getElementById('live-clock').innerHTML = now;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
